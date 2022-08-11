@@ -13,6 +13,10 @@ function createTitle() {
     const header = $('<h></h>')
     $(header).attr('id', "header")
     $(header).text('Excuse Generator')
+    const paraText = $('<p></p>')
+    $(paraText).attr('id', 'paraText')
+    $(paraText).text('Need an excuse, we got your back!')
+    $(container).append(paraText)
     $(container).prepend(header)
 }
 
@@ -34,6 +38,7 @@ function createButtons(array) {
         const button = $('<button></button>')
         $(button).attr('id', `${category}`)
         $(button).addClass('btnClass')
+        $(button).addClass('btnClass-slide')
         $(button).text(`Get excuse for ${category}`)
         $(containerBtn).append(button)
         buttonClickEvent(button)
@@ -57,8 +62,6 @@ function buttonClickEvent(button) {
 function getExcuse(currentCategory) {
     $.get(`https://excuser.herokuapp.com/v1/excuse/${currentCategory}`, (data) => {
         acessObj(data)
-
-
     })
 }
 
