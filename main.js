@@ -12,7 +12,7 @@ createButtons(excuseCatrgories)
 function createTitle() {
     const header = $('<h></h>')
     $(header).attr('id', "header")
-    $(header).text('Excuse generator')
+    $(header).text('Excuse Generator')
     $(container).prepend(header)
 }
 
@@ -54,10 +54,6 @@ function buttonClickEvent(button) {
 
 
 
-
-
-
-
 function getExcuse(currentCategory) {
     $.get(`https://excuser.herokuapp.com/v1/excuse/${currentCategory}`, (data) => {
         acessObj(data)
@@ -82,6 +78,7 @@ function acessObj(data) {
 function makeDiv(objExcuse) {
     const exMessage = objExcuse.excuse
     const divExcuse = $('<div></div>')
+    $(divExcuse).attr('id', 'text')
     $(divExcuse).text(`Excuse: ${exMessage}`)
     $(containerExcuse).append(divExcuse)
 
